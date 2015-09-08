@@ -12,12 +12,12 @@ class Solution(object):
                 position = substring_map[s[i]]
                 length = i - start
                 start = position + 1
-                longest = length if length > longest else longest
+                longest = max(length, longest)
                 new_map = {}
                 new_map.update((k, v) for k, v in substring_map.iteritems() if v > position)
                 substring_map = new_map
             substring_map[s[i]] = i
-        longest = len(substring_map) if len(substring_map) > longest else longest
+        longest = max(len(substring_map), longest)
         return longest
 
 if __name__ == "__main__":
