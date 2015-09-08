@@ -1,5 +1,6 @@
 # The trick is not read the requirement, and consider all possible input by yourself.
 
+
 class Solution(object):
     def myAtoi(self, str):
         """
