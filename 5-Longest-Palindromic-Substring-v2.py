@@ -1,7 +1,5 @@
 class Solution(object):
     def findPalindrome(self, s, start, end, longest_len):
-        # print "inside ", s
-        # print start
         if end - start < longest_len:
             try:
                 if s[longest_len/2 + (end + start)/2] != s[(start+end+1)/2-longest_len/2]:
@@ -43,7 +41,7 @@ class Solution(object):
             if longest_end - longest_start < end - start:
                 longest_start, longest_end = start, end
                 longest_len = longest_end - longest_start + 1
-            # fast forward
+            # fast forward to the next search point
             j = i + 1
             while j < s_len and s[i] != s[j]:
                 if j - i < longest_len:

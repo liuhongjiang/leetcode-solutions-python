@@ -33,7 +33,7 @@ class Solution(object):
             start, end = self.findPalindrome(s, start, end)
             if longest_end - longest_start < end - start:
                 longest_start, longest_end = start, end
-            # fast forward
+            # fast forward to the next search point
             j = i + 1
             while j < s_len and s[i] != s[j]:
                 if j - i < longest_end - longest_start:
