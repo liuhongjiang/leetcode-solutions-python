@@ -1,0 +1,5 @@
+# format [args_list, expect]
+
+{"args": ["aa", "a"], "expect": false}
+{"args": ["aa", "aa"], "expect": true}
+{"args": ["aa", "aa*"], "expect": true}
