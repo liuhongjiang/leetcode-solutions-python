@@ -3,14 +3,43 @@
 # Run this file, it will run the test case for the latest modified python code file
 # the test cases files are come from test_data directory
 
-
 import argparse
 import importlib
 import inspect
 import os
 import sys
 import glob
+import unittest
 import json
+
+
+class TestSolution(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    @classmethod
+    def inject(cls, solution, test_datum):
+        cls.solution = solution
+        cls.test_datum = test_datum
+
+    def testSolution(self):
+        for data in self.test_datum:
+            try:
+                # find the target method, there should be one and only one method, which
+                # does not start with underscore('_')
+                # create solution object for each test case, in case there are cache in solution object
+                obj = self.solution()
+                funcs = inspect.getmembers(obj, inspect.ismethod)
+                pub_funcs = filter(lambda x: not x[0].startswith('_'), funcs)
+                func_name = pub_funcs[0][0]
+                self.assertEqual(getattr(obj, func_name)(*data["args"]), data["expect"])
+            except AssertionError as e:
+                print "input:", data["args"], ", expect:", data["expect"]
+                print e.message
+                raise e
 
 
 class BColors(object):
@@ -29,30 +58,19 @@ def color_print(string, color):
 
 
 def run_unittest(problem):
-    print "Run test cases for ",
+    print "Run test cases for:",
     color_print("[%s]" % problem, BColors.OK_BLUE)
 
     # load the solution
     module = importlib.import_module(problem)
     solution = getattr(module, 'Solution', None)
 
-    # find the target method, there should be one and only one method, which
-    # does not start with underscore('_')
-    funcs = inspect.getmembers(solution(), inspect.ismethod)
-    pub_funcs = filter(lambda x: not x[0].startswith('_'), funcs)
-    func = pub_funcs[0][1]
-
     # load all the test data
     test_dir = _get_test_dir()
     test_datum = _load_data(test_dir + '/%s-testcases.data' % problem)
-    for data in test_datum:
-        result = func(*data["args"])
-        if result != data["expect"]:
-            color_print("args = [%s], expect = [%s], result = [%s]" % (data["args"], data["expect"], result),
-                        BColors.FAIL)
-            return
 
-    color_print("pass unit test!", BColors.OK_GREEN)
+    TestSolution.inject(solution, test_datum)
+    unittest.main()
 
 
 def _get_test_dir():

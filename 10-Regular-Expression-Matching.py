@@ -1,6 +1,3 @@
-import unittest
-
-
 class Solution(object):
     def __init__(self):
         self.cache = {}
@@ -83,48 +80,3 @@ class Solution(object):
             return True
         else:
             return False
-
-
-class TestSolution(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def tearDown(self):
-        pass
-
-    def testIsMatch(self):
-        test_pairs = [
-            ("aa", "a", False),
-            ("aa", "aa", True),
-            ("aaa", "aa", False),
-            ("aa", "a*", True),
-            ("aa", ".*", True),
-            ("ab", ".*", True),
-            ("aab", "c*a*b", True),
-            ("", "", True),
-            ("123abc", "123.*abc", True),
-            ("123abcabc", "123.*abc", True),
-            ("123abcabcabcabc", "123.*abc", True),
-            ("aaaaaaa", "a*aa", True),
-            ("aa", "a*aa", True),
-            ("aa", "a*.*", True),
-            ("aa", "a*c*", True),
-            ("", "a*b*", True),
-            ("aaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*c", False),
-            ("acaabbaccbbacaabbbb", "a*.*b*.*a*aa*a*", False),
-            ("aa", "a*c*a", True),
-            ("aaa", "ab*a*c*a", True),
-            ("ab", ".*..", True),
-            ("ab", ".*ab.*", True),
-            ("abcac", ".*ab.a.*a*", True),
-            ("abcaaaaaaabaabcabac", ".*ab.a.*a*a*.*b*b*", True),
-            ("abbaaaabaabbcba", "a*.*ba.*c*..a*.a*.", True)
-        ]
-        for pair in test_pairs:
-            self.assertEqual(self.solution.isMatch(pair[0], pair[1]), pair[2])
-            self.solution.cache = {}
-
-
-if __name__ == "__main__":
-    unittest.main()
-    pass
