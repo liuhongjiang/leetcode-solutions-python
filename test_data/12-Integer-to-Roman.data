@@ -1,0 +1,7 @@
+{"args": [9], "expect": "IX"}
+{"args": [1980], "expect": "MCMLXXX"}
+{"args": [19], "expect": "XIX"}
+{"args": [20], "expect": "XX"}
+{"args": [45], "expect": "XLV"}
+{"args": [3001], "expect": "MMMI"}
+{"args": [3010], "expect": "MMMX"}
