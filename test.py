@@ -67,7 +67,7 @@ def run_unittest(problem):
 
     # load all the test data
     test_dir = _get_test_dir()
-    test_datum = _load_data(test_dir + '/%s-testcases.data' % problem)
+    test_datum = _load_data(test_dir + '/%s.data' % problem)
 
     TestSolution.inject(solution, test_datum)
     unittest.main()
