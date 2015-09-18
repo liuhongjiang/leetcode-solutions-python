@@ -1,0 +1,7 @@
+{"args": [["abcdef","abc2","abcd3","abc4","abckk5","abcdfe4","abcdefe3","abcde2","abcfe1"]], "expect": "abc"}
+{"args": [["abcdef","abc2","abcd3","abc4","abckk5","abcdfe4","abcdefe3","abcde2","abcfe1","addd"]], "expect": "a"}
+{"args": [["abcdef","abc2","abcd3","abc4","abckk5","abcdfe4","abcdefe3","abcde2","abcfe1",""]], "expect": ""}
+{"args": [["abcdef","abc2","abcd3","abc4","abckk5","abcdfe4","abcdefe3","abcde2","abcfe1","addd","mkfa"]], "expect": ""}
+{"args": [[]], "expect": ""}
+{"args": [["abcde"]], "expect": "abcde"}
+{"args": [["", ""]], "expect": ""}
