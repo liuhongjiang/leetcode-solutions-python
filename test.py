@@ -35,7 +35,18 @@ class TestSolution(unittest.TestCase):
                 funcs = inspect.getmembers(obj, inspect.ismethod)
                 pub_funcs = filter(lambda x: not x[0].startswith('_'), funcs)
                 func_name = pub_funcs[0][0]
-                self.assertEqual(getattr(obj, func_name)(*data["args"]), data["expect"])
+
+                result = getattr(obj, func_name)(*data["args"])
+                expect = data["expect"]
+                if isinstance(expect, list):
+                    result = sorted(result)
+                    expect = sorted(expect)
+                    self.assertListEqual(result, expect)
+                elif isinstance(expect, dict):
+                    self.assertDictEqual(result, expect)
+                else:
+                    self.assertEqual(result, expect)
+
             except AssertionError as e:
                 print "input:", data["args"], ", expect:", data["expect"]
                 print e.message
