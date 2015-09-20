@@ -1,0 +1,7 @@
+{"args": ["22"], "expect": ["aa", "ab", "ac", "ba", "bb", "bc", "ca", "cb", "cc"]}
+{"args": ["23"], "expect": ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]}
+{"args": ["231"], "expect": ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]}
+{"args": ["123"], "expect": ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]}
+{"args": ["213"], "expect": ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]}
+{"args": ["1111"], "expect": []}
+{"args": [""], "expect": []}
