@@ -78,7 +78,11 @@ def run_unittest(problem):
 
     # load all the test data
     test_dir = _get_test_dir()
-    test_datum = _load_data(test_dir + '/%s.data' % problem)
+    data_filename = problem
+    position = data_filename.find('_')
+    if position > -1:
+        data_filename = data_filename[0:position]
+    test_datum = _load_data(test_dir + '/%s.data' % data_filename)
 
     TestSolution.inject(solution, test_datum)
     unittest.main()
