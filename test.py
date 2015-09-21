@@ -39,7 +39,8 @@ class TestSolution(unittest.TestCase):
                 result = getattr(obj, func_name)(*data["args"])
                 expect = data["expect"]
                 if isinstance(expect, list):
-                    result = sorted(result)
+                    if isinstance(result, list):
+                        result = sorted(result)
                     expect = sorted(expect)
                     self.assertListEqual(result, expect)
                 elif isinstance(expect, dict):
