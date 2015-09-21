@@ -1,5 +1,5 @@
 class Solution(object):
-    def twoSum(self, nums, target, three_sum_dict):
+    def _twoSum(self, nums, target, three_sum_dict):
         cache = {}
         for num in nums:
             if cache.get(target - num):
@@ -21,7 +21,7 @@ class Solution(object):
                 continue
             if nums[i] > 0:
                 break
-            self.twoSum(nums[i + 1:], -nums[i], three_sum_dict)
+            self._twoSum(nums[i + 1:], -nums[i], three_sum_dict)
 
         three_list = [v for k, v in three_sum_dict.iteritems()]
         return three_list

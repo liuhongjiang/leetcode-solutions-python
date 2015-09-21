@@ -2,7 +2,7 @@
 
 
 class Solution(object):
-    def twoSumClosest(self, nums, current, target, closest):
+    def _twoSumClosest(self, nums, current, target, closest):
         if len(nums) <= 1:
             return closest
         if nums[0] + nums[1] + current - target > abs(target - closest):
@@ -39,7 +39,7 @@ class Solution(object):
             if nums[i] < 0 and 3 * nums[i] - target > abs(closest - target):
                 break
 
-            closest = self.twoSumClosest(nums[i + 1:], nums[i], target, closest)
+            closest = self._twoSumClosest(nums[i + 1:], nums[i], target, closest)
             if closest == target:
                 return closest
 

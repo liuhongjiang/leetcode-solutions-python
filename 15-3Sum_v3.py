@@ -2,7 +2,7 @@
 
 
 class Solution(object):
-    def twoSum(self, nums, target, three_sum):
+    def _twoSum(self, nums, target, three_sum):
         if len(nums) <= 1:
             return
         if nums[0] + nums[1] > target:
@@ -38,6 +38,6 @@ class Solution(object):
                 continue
             if nums[i] > 0:
                 break
-            self.twoSum(nums[i + 1:], -nums[i], three_sum)
+            self._twoSum(nums[i + 1:], -nums[i], three_sum)
         return three_sum
 
