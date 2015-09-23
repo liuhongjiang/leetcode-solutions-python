@@ -4,7 +4,7 @@ Solutions implemented in python for [leetcode algorithms](https://leetcode.com/p
 
 The file name organized in the following format:
 
-{problem number}-{problem title}-{version}.py
+{problem number}-{problem title}_{version}.py
 
 The version is optional.
 

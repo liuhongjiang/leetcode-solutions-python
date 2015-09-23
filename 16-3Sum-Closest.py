@@ -34,9 +34,7 @@ class Solution(object):
         for i in range(len(nums)):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            if nums[i] > 0 and nums[i] - target > abs(closest - target):
-                break
-            if nums[i] < 0 and 3 * nums[i] - target > abs(closest - target):
+            if 3 * nums[i] - target > abs(closest - target):
                 break
 
             closest = self._twoSumClosest(nums[i + 1:], nums[i], target, closest)
